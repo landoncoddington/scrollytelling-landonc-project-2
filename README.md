@@ -2,31 +2,6 @@
 
 Student-facing repo for final project execution and turn-in.
 
-## Why This Repo Uses Issues
-
-Issues are required because they mirror real development workflow.
-
-You will use them to:
-
-- plan and sequence work
-- track progress publicly
-- report blockers with evidence
-- verify final completion
-
-## Use This Template
-
-If you already completed template setup from the Canvas assignment, skip this section and go to **Start Here**.
-
-If you have not created your repo yet:
-
-1. Click [Use this template](https://github.com/sicxz/desn378-project-2-student-hub/generate)
-2. Create a new repo named `scrollytelling-[project-title]-[firstname]`
-3. Keep it `Public`
-4. Clone your new repo locally and start building
-
-After your repo is created:
-
-5. In your own copied repo, delete this `Use This Template` section from `README.md`.
 
 ## Start Here
 
