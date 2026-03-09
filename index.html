@@ -1,36 +1,32 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lost in the Scroll — JavaScript Through Football</title>
-  <link rel="stylesheet" href="styles/variables.css" />
-  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/variables.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-
   <main>
-<!-- ===================== HERO / KICKOFF ===================== -->
-<section class="hero" id="hero">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero__layer hero__bg"></div>
+      <div class="hero__layer hero__mid"></div>
+      <div class="hero__layer hero__front"></div>
+      <div class="hero__overlay"></div>
 
-  <div class="hero__layer hero__bg"></div>
-  <div class="hero__layer hero__mid"></div>
-  <div class="hero__layer hero__front"></div>
-  <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1>Learning JavaScript Felt Like Walking Onto a Soccer Field</h1>
+        <p>At first, I didn't even know where the field was...</p>
+        <div class="hero__scroll-cue" aria-hidden="true">
+          <span>Scroll to kick off</span>
+          <div class="hero__scroll-arrow">↓</div>
+        </div>
+      </div>
+    </section>
 
-  <div class="hero__content">
-    <h1>Learning JavaScript Felt Like Walking Onto a Soccer Field</h1>
-    <p>At first, I didn't even know where the field was...</p>
-
-    <div class="hero__scroll-cue" aria-hidden="true">
-      <span>Scroll to kick off</span>
-      <div class="hero__scroll-arrow">↓</div>
-    </div>
-  </div>
-
-</section>
-    <!-- ===================== CHAPTER 1: KICKOFF ===================== -->
+    <!-- CHAPTER 1 -->
     <section class="section section--chapter section--dark" id="kickoff">
       <div class="section__content">
         <p class="section__label">Chapter 1</p>
@@ -51,7 +47,7 @@
       </div>
     </section>
 
-    <!-- ===================== CHAPTER 2: FIRST TOUCH ===================== -->
+    <!-- CHAPTER 2 -->
     <section class="section section--chapter section--mid" id="first-contact">
       <div class="section__content">
         <p class="section__label">Chapter 2</p>
@@ -72,7 +68,7 @@
       </div>
     </section>
 
-    <!-- ===================== CHAPTER 3: JERSEY NUMBERS ===================== -->
+    <!-- CHAPTER 3 -->
     <section class="section section--chapter section--dark" id="jersey-numbers">
       <div class="section__content">
         <p class="section__label">Chapter 3</p>
@@ -80,8 +76,8 @@
         <p class="section__metaphor">
           <em>Before the match, every player gets a name and a number. Without it you can't call for the ball or find your teammate.</em>
         </p>
-                <div class="section__image">
-          <img src="assets/locker-room.png" alt="Football locker room before a match" />
+        <div class="section__image">
+          <img src="assets/locker-room.png" alt="Football locker room before a match">
         </div>
         <p>
           Variables are how you name things in JavaScript. <code>let</code>, <code>const</code>, <code>var</code> — each one tags a value so you can find it again. Without names, the pitch is chaos.
@@ -96,7 +92,7 @@
       </div>
     </section>
 
-    <!-- ===================== CHAPTER 4: READING THE PLAY ===================== -->
+    <!-- CHAPTER 4 -->
     <section class="section section--chapter section--mid" id="reading-the-play">
       <div class="section__content">
         <p class="section__label">Chapter 4</p>
@@ -117,7 +113,7 @@
       </div>
     </section>
 
-    <!-- ===================== CHAPTER 5: FINAL WHISTLE ===================== -->
+    <!-- CHAPTER 5 -->
     <section class="section section--chapter section--final" id="final-whistle">
       <div class="section__content">
         <p class="section__label">Chapter 5</p>
@@ -130,22 +126,18 @@
         </p>
         <p>
           JavaScript isn't a wall you climb over once. It's a game you keep playing, getting sharper with every match. The fundamentals travel with you — the pitch just gets bigger.
-        </p>              
+        </p>
         <div class="section__image">
-          <img src="assets/lights.png" alt="Bright stadium lights at night" />
+          <img src="assets/lights.png" alt="Bright stadium lights at night">
         </div>
         <div class="chapter__concept">
           <span class="concept__tag">What Shifted</span>
           <p>Scoreboard flashes in, stadium lights dim slowly. The game is over — but the season is just starting.</p>
         </div>
       </div>
-
     </section>
-
   </main>
- 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="scripts/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="scripts/main.js"></script>
 </body>
 </html>
