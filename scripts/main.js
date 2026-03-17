@@ -1,7 +1,5 @@
-// register plugins
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-// theme toggle with localStorage
 const themeToggle = document.querySelector("#theme-toggle");
 const iconSun = document.querySelector("#icon-sun");
 const iconMoon = document.querySelector("#icon-moon");
@@ -29,14 +27,8 @@ themeToggle.addEventListener("click", () => {
   }
 });
 
-// =====================
-// REDUCED MOTION CHECK
-// =====================
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// =====================
-// HERO INTRO
-// =====================
 const heroTL = gsap.timeline();
 heroTL
   .fromTo(".hero__content", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 2.0, ease: "power1.out" })
@@ -46,61 +38,63 @@ heroTL
 
 if (!prefersReducedMotion) {
 
-gsap.to(".hero__content", {
-  scale: 0.88,
-  y: 60,
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".hero",
-    start: "top top",
-    end: "bottom top",
-    scrub: 1,
-  }
-});
+  ScrollSmoother.create({
+    wrapper: "#smooth-wrapper",
+    content: "#smooth-content",
+    smooth: 2,
+    effects: true,
+  });
 
-  // =====================
-  // CHAPTER 1 
-  // =====================
-const kickoffTL = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#kickoff",
-    start: "top top",
-    end: "+=80%",
-    pin: true,
-    scrub: false,
-  }
-});
-
-kickoffTL
-  .fromTo("#kickoff", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, "-=0.3")
-  .fromTo("#kickoff h2", { opacity: 0, x: -80, rotation: -2 }, { opacity: 1, x: 0, rotation: 0, duration: 0.9, ease: "power3.out" }, "-=0.5")
-  .fromTo("#kickoff .section__metaphor", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, "-=0.4")
-  .fromTo("#kickoff .section__content > p", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.2, ease: "power2.out" }, "-=0.3")
-  .fromTo("#kickoff .chapter__concept", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.1")
-  .fromTo("#kickoff .chapter__concept p", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, "-=0.4")
-  .to("#soccer-ball", { y: -40, duration: 0.2, ease: "power2.out" })
-  .to("#soccer-ball", { y: 0, duration: 0.3, ease: "bounce.out" })
-  .to("#soccer-ball", { y: -20, duration: 0.15, ease: "power2.out" })
-  .to("#soccer-ball", { y: 0, duration: 0.2, ease: "bounce.out" });
-
-gsap.fromTo("#soccer-ball",
-  { x: 0, rotation: 0 },
-  {
-    x: -800,
-    rotation: -720,
+  gsap.to(".hero__content", {
+    scale: 0.88,
+    y: 60,
     ease: "none",
     scrollTrigger: {
-      trigger: "#kickoff",
-      start: "center bottom",
+      trigger: ".hero",
+      start: "top top",
       end: "bottom top",
-      scrub: true,
+      scrub: 1,
     }
-  }
-);
+  });
 
-  // =====================
-  // CHAPTER 2 — scroll reveal
-  // =====================
+  const kickoffTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#kickoff",
+      start: "top top",
+      end: "+=80%",
+      pin: true,
+      scrub: false,
+    }
+  });
+
+  kickoffTL
+    .fromTo("#soccer-ball", { opacity: 0, x: -600, y: -400, rotation: -720 }, { opacity: 1, x: 0, y: 0, rotation: 0, duration: 1.5, ease: "power3.out" })
+    .fromTo("#kickoff", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, "-=0.3")
+    .fromTo("#kickoff h2", { opacity: 0, x: -80, rotation: -2 }, { opacity: 1, x: 0, rotation: 0, duration: 0.9, ease: "power3.out" }, "-=0.5")
+    .fromTo("#kickoff .section__metaphor", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, "-=0.4")
+    .fromTo("#kickoff .section__content > p", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.2, ease: "power2.out" }, "-=0.3")
+    .fromTo("#kickoff .chapter__concept", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.1")
+    .fromTo("#kickoff .chapter__concept p", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, "-=0.4")
+    .to("#soccer-ball", { y: -40, duration: 0.2, ease: "power2.out" })
+    .to("#soccer-ball", { y: 0, duration: 0.3, ease: "bounce.out" })
+    .to("#soccer-ball", { y: -20, duration: 0.15, ease: "power2.out" })
+    .to("#soccer-ball", { y: 0, duration: 0.2, ease: "bounce.out" });
+
+  gsap.fromTo("#soccer-ball",
+    { x: 0, rotation: 0 },
+    {
+      x: -800,
+      rotation: -720,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#kickoff",
+        start: "center bottom",
+        end: "bottom top",
+        scrub: true,
+      }
+    }
+  );
+
   const chapter2TL = gsap.timeline({
     scrollTrigger: {
       trigger: "#first-contact",
@@ -117,31 +111,26 @@ gsap.fromTo("#soccer-ball",
     .fromTo("#first-contact .chapter__concept", { opacity: 0, scale: 0.88, y: 10 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "elastic.out(1, 0.6)" }, "-=0.1")
     .fromTo("#first-contact .chapter__concept p", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, "-=0.4");
 
+  const lightsOnTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#first-contact",
+      start: "top 80%",
+      toggleActions: "play none none reset",
+    }
+  });
 
-    const lightsOnTL = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#first-contact",
-    start: "top 80%",
-    toggleActions: "play none none reset",
-  }
-});
+  lightsOnTL
+    .fromTo("#chapter2-lights", { opacity: 0 }, { opacity: 0, duration: 0.1 })
+    .fromTo("#chapter2-lights", { opacity: 0 }, { opacity: 0.1, duration: 0.05, ease: "none" })
+    .to("#chapter2-lights", { opacity: 0, duration: 0.05, ease: "none" })
+    .to("#chapter2-lights", { opacity: 0.1, duration: 0.05, ease: "none" })
+    .to("#chapter2-lights", { opacity: 0, duration: 0.05, ease: "none" })
+    .to("#chapter2-lights", { opacity: 0.2, duration: 0.1, ease: "none" })
+    .to("#chapter2-lights", { opacity: 0, duration: 0.05, ease: "none" })
+    .to("#chapter2-lights", { opacity: 0.15, duration: 0.3, ease: "power2.out" })
+    .fromTo("#kick-player", { opacity: 0 }, { opacity: 0.15, duration: 0.6, ease: "power2.out" }, "-=0.2");
 
-lightsOnTL
-lightsOnTL
-  .fromTo("#chapter2-lights", { opacity: 0 }, { opacity: 0, duration: 0.1 })
-  .fromTo("#chapter2-lights", { opacity: 0 }, { opacity: 0.1, duration: 0.05, ease: "none" })
-  .to("#chapter2-lights", { opacity: 0, duration: 0.05, ease: "none" })
-  .to("#chapter2-lights", { opacity: 0.1, duration: 0.05, ease: "none" })
-  .to("#chapter2-lights", { opacity: 0, duration: 0.05, ease: "none" })
-  .to("#chapter2-lights", { opacity: 0.2, duration: 0.1, ease: "none" })
-  .to("#chapter2-lights", { opacity: 0, duration: 0.05, ease: "none" })
-  .to("#chapter2-lights", { opacity: 0.15, duration: 0.3, ease: "power2.out" })
-  .fromTo("#kick-player", { opacity: 0 }, { opacity: 0.15, duration: 0.6, ease: "power2.out" }, "-=0.2");
-
-  // =====================
-  // CHAPTER 3 — scroll reveal
-  // =====================
-const chapter3TL = gsap.timeline({
+  const chapter3TL = gsap.timeline({
     scrollTrigger: {
       trigger: "#jersey-numbers",
       start: "top 80%",
@@ -159,9 +148,7 @@ const chapter3TL = gsap.timeline({
     .fromTo("#jersey-numbers .chapter__concept p", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, "-=0.4")
     .fromTo("#jersey-number", { opacity: 0, y: 5 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(2)" }, "-=0.2")
     .fromTo("#jersey-name", { opacity: 0, y: 3 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, "-=0.3");
-  // =====================
-  // CHAPTER 4 — scroll reveal
-  // =====================
+
   const chapter4TL = gsap.timeline({
     scrollTrigger: {
       trigger: "#reading-the-play",
@@ -178,53 +165,51 @@ const chapter3TL = gsap.timeline({
     .fromTo("#reading-the-play .chapter__concept", { opacity: 0, x: 30, scale: 0.95 }, { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, "-=0.1")
     .fromTo("#reading-the-play .chapter__concept p", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, "-=0.4");
 
-    const tacticsTL = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#reading-the-play",
-    start: "top 80%",
-    toggleActions: "play none none reset",
-  }
-});
+  const tacticsTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#reading-the-play",
+      start: "top 80%",
+      toggleActions: "play none none reset",
+    }
+  });
 
-const arrow1 = document.querySelector("#arrow1");
-const arrow2 = document.querySelector("#arrow2");
-const arrow3 = document.querySelector("#arrow3");
-const arrow1head = document.querySelector("#arrow1head");
-const arrow2head = document.querySelector("#arrow2head");
-const arrow3head = document.querySelector("#arrow3head");
+  const arrow1 = document.querySelector("#arrow1");
+  const arrow2 = document.querySelector("#arrow2");
+  const arrow3 = document.querySelector("#arrow3");
+  const arrow1head = document.querySelector("#arrow1head");
+  const arrow2head = document.querySelector("#arrow2head");
+  const arrow3head = document.querySelector("#arrow3head");
 
-if (arrow1 && arrow2 && arrow3) {
-  const len1 = arrow1.getTotalLength();
-  const len2 = arrow2.getTotalLength();
-  const len3 = arrow3.getTotalLength();
-  const headLen = arrow1head.getTotalLength();
+  if (arrow1 && arrow2 && arrow3) {
+    const len1 = arrow1.getTotalLength();
+    const len2 = arrow2.getTotalLength();
+    const len3 = arrow3.getTotalLength();
+    const headLen = arrow1head.getTotalLength();
 
-  gsap.set("#arrow1", { strokeDasharray: len1, strokeDashoffset: len1 });
-  gsap.set("#arrow2", { strokeDasharray: len2, strokeDashoffset: len2 });
-  gsap.set("#arrow3", { strokeDasharray: len3, strokeDashoffset: len3 });
-  gsap.set("#arrow1head, #arrow2head, #arrow3head", { strokeDasharray: headLen, strokeDashoffset: headLen });
+    gsap.set("#arrow1", { strokeDasharray: len1, strokeDashoffset: len1 });
+    gsap.set("#arrow2", { strokeDasharray: len2, strokeDashoffset: len2 });
+    gsap.set("#arrow3", { strokeDasharray: len3, strokeDashoffset: len3 });
+    gsap.set("#arrow1head, #arrow2head, #arrow3head", { strokeDasharray: headLen, strokeDashoffset: headLen });
 
-  tacticsTL
-    .fromTo("#tactics-svg", { opacity: 0 }, { opacity: 0.15, duration: 0.5, ease: "power2.out" })
-    .to("#arrow1", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out", filter: "drop-shadow(0 0 6px white)" }, "-=0.2")
-    .to("#arrow1head", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, "-=0.1")
-    .to("#arrow2", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out", filter: "drop-shadow(0 0 6px white)" }, "-=0.3")
-    .to("#arrow2head", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, "-=0.1")
-    .to("#arrow3", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out", filter: "drop-shadow(0 0 6px white)" }, "-=0.3")
-    .to("#arrow3head", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, "-=0.1");
+    tacticsTL
+      .fromTo("#tactics-svg", { opacity: 0 }, { opacity: 0.15, duration: 0.5, ease: "power2.out" })
+      .to("#arrow1", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out", filter: "drop-shadow(0 0 6px white)" }, "-=0.2")
+      .to("#arrow1head", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, "-=0.1")
+      .to("#arrow2", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out", filter: "drop-shadow(0 0 6px white)" }, "-=0.3")
+      .to("#arrow2head", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, "-=0.1")
+      .to("#arrow3", { strokeDashoffset: 0, duration: 0.8, ease: "power2.out", filter: "drop-shadow(0 0 6px white)" }, "-=0.3")
+      .to("#arrow3head", { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, "-=0.1");
 
     gsap.to("#arrow1, #arrow2, #arrow3, #arrow1head, #arrow2head, #arrow3head", {
-  opacity: 0.3,
-  duration: 1.5,
-  repeat: -1,
-  yoyo: true,
-  ease: "power1.inOut",
-  delay: 1.5
-});
-}
-  // =====================
-  // CHAPTER 5 — scroll reveal
-  // =====================
+      opacity: 0.3,
+      duration: 1.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+      delay: 1.5
+    });
+  }
+
   const chapter5TL = gsap.timeline({
     scrollTrigger: {
       trigger: "#final-whistle",
@@ -242,25 +227,29 @@ if (arrow1 && arrow2 && arrow3) {
     .fromTo("#final-whistle .chapter__concept", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 1.0, ease: "power1.out" }, "-=0.4")
     .fromTo("#final-whistle .chapter__concept p", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, "-=0.6");
 
-}
-
-gsap.fromTo("#whistle-svg",
-  { opacity: 0, rotation: -30 },
-  { opacity: 1, rotation: 0, duration: 0.6, ease: "back.out(2)",
-    scrollTrigger: {
-      trigger: "#final-whistle",
-      start: "top 80%",
-      toggleActions: "play none none reset",
-    },
-    onComplete: () => {
-      gsap.to("#whistle-top, #whistle-left, #whistle-right", {
-        x: -3,
-        duration: 0.06,
-        repeat: 8,
-        yoyo: true,
-        ease: "none",
-        transformOrigin: "center center"
-      });
+  gsap.fromTo("#whistle-svg",
+    { opacity: 0, rotation: -30 },
+    {
+      opacity: 1,
+      rotation: 0,
+      duration: 0.6,
+      ease: "back.out(2)",
+      scrollTrigger: {
+        trigger: "#final-whistle",
+        start: "top 80%",
+        toggleActions: "play none none reset",
+      },
+      onComplete: () => {
+        gsap.to("#whistle-top, #whistle-left, #whistle-right", {
+          x: -3,
+          duration: 0.06,
+          repeat: 8,
+          yoyo: true,
+          ease: "none",
+          transformOrigin: "center center"
+        });
+      }
     }
-  }
-);
+  );
+
+}

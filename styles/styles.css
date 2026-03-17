@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap');
 
-
 *,
 *::before,
 *::after {
@@ -8,8 +7,6 @@
   margin: 0;
   padding: 0;
 }
-
-
 
 body {
   background: var(--color-surface-primary);
@@ -19,6 +16,26 @@ body {
   line-height: var(--line-height-body-lg);
 }
 
+p {
+  margin-bottom: var(--space-md);
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+  font-weight: 400;
+  margin-bottom: var(--space-md);
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  font-weight: 400;
+  margin-bottom: var(--space-md);
+}
+
 code {
   font-family: monospace;
   background: rgba(255,255,255,0.08);
@@ -26,149 +43,6 @@ code {
   padding: 0.15em 0.4em;
   border-radius: 4px;
   font-size: 0.9em;
-}
-
-.hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  overflow: hidden;
-  z-index: 10;
-}
-
-.hero__layer {
-  position: absolute;
-  top: -20%;
-  bottom: -20%;
-  left: 0;
-  right: 0;
-  height: 140%;
-  background-size: cover;
-  background-position: center;
-  will-change: transform, filter;
-}
-
-.hero__bg { 
-  background-image: url("../assets/stadium.png"); 
-  transform: scale(1.1); 
-  filter: brightness(0.7); 
-  z-index: 0; 
-  will-change: transform;
-}
-.hero__mid { 
-  background-image: url("../assets/tunnel.png"); 
-  transform: scale(1.05); 
-  z-index: 1; 
-  will-change: transform;
-}
-.hero__front { background-image: url("../assets/grain.png"); opacity: 0.3; mix-blend-mode: overlay; z-index: 2; }
-.hero__overlay {
-  position: absolute; inset: 0;
-  background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.85) 100%);
-  z-index: 3;
-}
-.hero__content { position: relative; z-index: 4; }
-
-#soccer-ball {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  width: 100px;
-  height: 100px;
-}
-
-.section {
-  min-height: 100svh;
-  padding: var(--space-xl) var(--space-md);
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.section__svg svg,
-.section__svg,
-#jersey-numbers svg {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  width: 120px;
-  height: 120px;
-  z-index: 2;
-}
-
-#tactics-svg {
-  position: absolute;
-  right: 2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 300px;
-  width: 300px;
-  opacity: 0.15;
-  bottom: unset;
-}
-
-#final-whistle .section__svg {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  width: 200px;
-  height: 200px;
-  bottom: unset;
-  opacity: 80%;
-}
-
-#whistle-svg {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  width: 200px;
-  height: 200px;
-  bottom: unset;
-}
-
-.section__bg-svg {
-  position: absolute;
-  right: -5%;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 90%;
-  width: auto;
-  opacity: 80%;
-  pointer-events: none;
-}
-
-#kick-player {
-  position: absolute;
-  left: -5%;
-  top: 65%;
-  height: 70%;
-  width: auto;
-  opacity: 0.15;
-}
-
-#kick-ball {
-  position: absolute;
-  left: 30%;
-  bottom: 15%;
-  height: 80px;
-  width: 80px;
-  opacity: 0;
-}
-
-#chapter2-lights {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  mix-blend-mode: screen;
-  pointer-events: none;
 }
 
 #theme-toggle {
@@ -195,29 +69,71 @@ code {
   height: 100%;
 }
 
-
-.section__content {
-  width: min(72rem,100%);
-  margin-inline: auto;
-  max-width: 760px;
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  z-index: 10;
 }
 
-.section--has-image {
-  gap: var(--space-xl);
+.hero__layer {
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: 0;
+  right: 0;
+  height: 140%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform, filter;
 }
 
-.section--has-image .section__content {
-  flex: 1;
+.hero__bg {
+  background-image: url("../assets/stadium.png");
+  transform: scale(1.1);
+  filter: brightness(0.7);
+  z-index: 0;
+  will-change: transform;
 }
 
-.section--has-image .section__image {
-  flex: 1;
-  margin-bottom: 0;
+.hero__mid {
+  background-image: url("../assets/tunnel.png");
+  transform: scale(1.05);
+  z-index: 1;
+  will-change: transform;
 }
 
-.section--dark { background: var(--color-surface-primary); }
-.section--mid { background: var(--color-surface-mid); }
-.section--final { background: var(--color-surface-primary); }
+.hero__front {
+  background-image: url("../assets/grain.png");
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  z-index: 2;
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.85) 100%);
+  z-index: 3;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 4;
+}
+
+.section {
+  min-height: 100svh;
+  padding: var(--space-xl) var(--space-md);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
 
 .section::before {
   content: '';
@@ -226,10 +142,35 @@ code {
   z-index: 0;
 }
 
-.section__content { position: relative; z-index: 1; }
+.section__content {
+  width: min(72rem, 100%);
+  max-width: 760px;
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+}
 
-h1 { font-family: var(--font-heading); font-size: var(--font-size-h1); line-height: var(--line-height-h1); font-weight: 400; margin-bottom: var(--space-md); }
-h2 { font-family: var(--font-heading); font-size: var(--font-size-h2); line-height: var(--line-height-h2); font-weight: 400; margin-bottom: var(--space-md); }
+.section--dark  { background: var(--color-surface-primary); }
+.section--mid   { background: var(--color-surface-mid); }
+.section--final { background: var(--color-surface-primary); }
+
+.section--has-image {
+  gap: var(--space-xl);
+}
+
+.section--has-image .section__content,
+.section--has-image .section__image {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.section__image img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  will-change: transform;
+}
 
 .section__label {
   font-family: var(--font-body);
@@ -249,8 +190,6 @@ h2 { font-family: var(--font-heading); font-size: var(--font-size-h2); line-heig
   font-style: italic;
 }
 
-p { margin-bottom: var(--space-md); }
-
 .chapter__concept {
   margin-top: var(--space-lg);
   padding: var(--space-md);
@@ -264,8 +203,76 @@ p { margin-bottom: var(--space-md); }
   color: var(--color-accent-highlight);
 }
 
-.section__image { margin-bottom: var(--space-lg); }
-.section__image img { width: 100%; display: block; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.35); will-change: transform; }
+.section__svg,
+.section__svg svg,
+#jersey-numbers svg {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 120px;
+  height: 120px;
+  z-index: 2;
+}
+
+.section__bg-svg {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 90%;
+  width: auto;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+#soccer-ball {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 100px;
+  height: 100px;
+}
+
+#kick-player {
+  position: absolute;
+  left: -5%;
+  top: 65%;
+  height: 70%;
+  width: auto;
+  opacity: 0.15;
+}
+
+#chapter2-lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+#tactics-svg {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 300px;
+  width: 300px;
+  opacity: 0;
+  bottom: unset;
+}
+
+#whistle-svg {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 200px;
+  height: 200px;
+  bottom: unset;
+}
 
 .hero__content,
 .section,
@@ -285,23 +292,64 @@ p { margin-bottom: var(--space-md); }
   }
 }
 
+[data-theme="light"] #chapter2-lights {
+  mix-blend-mode: multiply;
+  opacity: 0.4;
+}
+
+[data-theme="light"] #kick-player {
+  opacity: 0.1;
+}
+
+[data-theme="light"] #tactics-svg {
+  stroke: #1a1a2e;
+}
+
+@media (prefers-color-scheme: light) {
+  #chapter2-lights {
+    mix-blend-mode: multiply;
+    opacity: 0.4;
+  }
+
+  #kick-player {
+    opacity: 0.1;
+  }
+
+  #tactics-svg {
+    stroke: #1a1a2e;
+  }
+}
+
 @media (max-width: 600px) {
-  h1 { font-size: clamp(2rem,12vw,var(--font-size-h1)); line-height: 1.1; }
-  h2 { font-size: clamp(1.5rem,9vw,var(--font-size-h2)); line-height: 1.15; }
-  .section { padding: var(--space-lg) var(--space-md); }
-  
+  h1 {
+    font-size: clamp(2rem, 12vw, var(--font-size-h1));
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 9vw, var(--font-size-h2));
+    line-height: 1.15;
+  }
+
+  .section {
+    padding: var(--space-lg) var(--space-md);
+  }
+
   .section--has-image {
     flex-direction: column;
     gap: var(--space-lg);
   }
 
-  .section--has-image .section__image {
-    width: 100%;
-  }
-
+  .section--has-image .section__image,
   .section--has-image .section__content {
     width: 100%;
   }
+
+  #reading-the-play {
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-md);
+  }
+
   #tactics-svg {
     width: 120px;
     height: 120px;
@@ -327,42 +375,5 @@ p { margin-bottom: var(--space-md); }
     left: 1rem;
     right: auto;
     top: auto;
-  }
-
-    #reading-the-play {
-    padding-top: var(--space-md);
-    padding-bottom: var(--space-md);
-  }
-}
-
-[data-theme="light"] #chapter2-lights {
-  mix-blend-mode: multiply;
-  opacity: 0.4;
-}
-
-@media (prefers-color-scheme: light) {
-  #chapter2-lights {
-    mix-blend-mode: multiply;
-    opacity: 0.4;
-  }
-}
-
-[data-theme="light"] #kick-player {
-  opacity: 10%;
-}
-
-@media (prefers-color-scheme: light) {
-  #kick-player {
-    opacity: 10%;
-  }
-}
-
-[data-theme="light"] #tactics-svg {
-  stroke: #1a1a2e;
-}
-
-@media (prefers-color-scheme: light) {
-  #tactics-svg {
-    stroke: #1a1a2e;
   }
 }
