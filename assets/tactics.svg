@@ -1,0 +1,21 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+  <!-- field outline -->
+  <rect x="10" y="10" width="180" height="180" rx="4"/>
+  <!-- center circle -->
+  <circle cx="100" cy="100" r="30"/>
+  <!-- center line -->
+  <line x1="10" y1="100" x2="190" y2="100"/>
+  <!-- top goal -->
+  <rect x="70" y="10" width="60" height="20"/>
+  <!-- bottom goal -->
+  <rect x="70" y="170" width="60" height="20"/>
+  <!-- arrow 1 -->
+  <path id="arrow1" d="M 60 60 Q 40 100 60 140"/>
+  <polyline id="arrow1head" points="50,128 60,140 70,128" fill="none" transform="rotate(-20, 60, 140)"/>
+  <!-- arrow 2 -->
+  <path id="arrow2" d="M 140 60 Q 160 100 140 140"/>
+  <polyline id="arrow2head" points="130,128 140,140 150,128" fill="none" transform="rotate(20, 140, 140)"/>
+  <!-- arrow 3 -->
+  <path id="arrow3" d="M 100 150 Q 100 120 100 80"/>
+  <polyline id="arrow3head" points="90,92 100,80 110,92" fill="none"/>
+</svg>

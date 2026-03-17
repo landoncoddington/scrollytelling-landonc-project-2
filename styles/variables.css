@@ -1,41 +1,63 @@
 :root {
   /* =========================
-     COLORS
+     COLORS — dark mode default
   ========================== */
-
   --color-surface-primary: #1a1a2e;
   --color-text-primary: #f5f5f0;
-
   --color-accent-primary: #1a5c2a;
   --color-accent-highlight: #e8c843;
   --color-accent-emphasis: #c0392b;
-
+  --color-surface-mid: #16213e;
+  --color-text-metaphor: rgba(245,245,240,0.55);
 
   /* =========================
      SPACING (8pt scale)
   ========================== */
-
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
   --space-lg: 24px;
   --space-xl: 40px;
 
-
   /* =========================
      TYPOGRAPHY
   ========================== */
-
   --font-heading: "Bebas Neue", sans-serif;
   --font-body: "Inter", sans-serif;
-
   --font-size-h1: 64px;
   --font-size-h2: 48px;
   --font-size-body-lg: 16px;
   --font-size-body-sm: 14px;
-
   --line-height-h1: 72px;
   --line-height-h2: 56px;
   --line-height-body-lg: 24px;
   --line-height-body-sm: 20px;
+}
+
+/* =========================
+   LIGHT MODE
+========================== */
+[data-theme="light"] {
+--color-surface-primary: #d4cfc7;
+  --color-text-primary: #1a1a2e;
+  --color-accent-primary: #1a5c2a;
+  --color-accent-highlight: #b8960a;
+  --color-surface-mid: #c8c3bb;
+  --color-text-metaphor: rgba(57, 57, 57, 0.6);
+  --color-svg-fill: #3a3a4a;
+}
+
+/* =========================
+   SYSTEM PREFERENCE
+========================== */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+   --color-surface-primary: #d4cfc7;
+    --color-text-primary: #1a1a2e;
+    --color-accent-primary: #1a5c2a;
+    --color-accent-highlight: #b8960a;
+    --color-surface-mid: #c8c3bb;
+    --color-text-metaphor: rgba(26,26,46,0.6);
+    --color-svg-fill: #3a3a4a;
+  }
 }
